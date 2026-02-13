@@ -1,0 +1,29 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /user
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:db.taxi.local}:${MYSQL_PORT:3306}/taxi?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PWD:Admin@123}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    show-sql: false
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+jwt:
+  secret: ${JWT_SECRET:changeMe}
+  expire-hours: 24
